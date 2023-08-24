@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>To-Do App</title>
+  <style>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.logo {
+  margin: 0;
+}
+
+.night-mode-toggle {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.new-todo {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.add-todo {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-todo:hover {
+  background-color: #555;
+}
+
+/* Night Mode styles */
+.night-mode {
+  background-color: #333;
+  color: white;
+}
+
+.night-mode .navbar {
+  background-color: #111;
+}
+
+.night-mode .new-todo,
+.night-mode .add-todo {
+  background-color: #111;
+  color: white;
+  border: 1px solid #333;
+}
+
+.night-mode .add-todo:hover {
+  background-color: #222;
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">To-Do App</h1>
+    <button id="nightModeToggle" class="night-mode-toggle">Dark Mode</button>
+  </nav>
+  
+  <div class="container">
+    <h2>My To-Do List</h2>
+   
+    <input type="text" id="newTodo" class="new-todo" placeholder="Add a new to-do">
+    <button id="addTodo" class="add-todo">Add</button>
+    <ul id="todoList" class="todo-list">
+        <!-- To-do items will be added dynamically here -->
+        <li>anythign awasome klasjflks</li>
+        <li>blah bla</li>
+   
+      </ul>
+  </div>
+
+  <script>
+    let nightMode =false
+    let body = document.querySelector("body")
+    let nightModeToggleBTN = document.getElementById("nightModeToggle")
+    function nightModeToggle ( ) {
+        if(nightMode){
+            body.style.backgroundColor="white"
+            nightModeToggleBTN.innerText="Dark Mode"
+            nightMode=false
+        }else{https://www.w3schools.com/jsref/prop_element_classlist.asp
+       
+        body.style.backgroundColor ="rgb(36,41,47)"
+        nightModeToggleBTN.innerText="Light Mode"
+        nightMode=true
+      }
+    }
+    nightModeToggleBTN.addEventListener("click",nightModeToggle)
+
+
+    // add list here
+
+    const parentTodoList  =  document.getElementById("todoList")
+    const newTodo = document.getElementById("newTodo")
+    const addTodo = document.getElementById("addTodo")
+
+    let todoList = ["Sujit","Suraj","Ashu","Swastik","Sandy","Unknown"]
+
+    function renderList (anything) {
+        let index = 1
+        parentTodoList.innerHTML =""
+        for(let list of anything){
+        let todoItem = document.createElement("li")
+        todoItem.innerText = index+" "+list
+        index++
+        parentTodoList.append(todoItem)
+        }
+    }
+    renderList(todoList)
+
+
+    addTodo.addEventListener("click",function(){
+        const valueofNewTodo =newTodo.value; // taking value of input
+        todoList.unshift(valueofNewTodo) // add to array
+        renderList(todoList) // render
+    })
+
+
+
+
+
+
+  </script>
+</body>
+</html>

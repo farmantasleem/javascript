@@ -1,6 +1,5 @@
 // array --> filter,map,forEach
 
-let numArr = [1,2,3,4,8,6,10];
 
 // i need even number
 
@@ -25,7 +24,27 @@ let numArr = [1,2,3,4,8,6,10];
 // forEach
 
 
-numArr.forEach(function(element){
-    console.log(element)
+// numArr.forEach(function(element){
+//     console.log(element)
+// })
+// let arrayNum=[1,2]
+
+// for(let elem of arrayNum){
+//     console.log(item)
+// }
+
+// reduce method 
+
+let numArr = [1,2,3,5]; // you need a value total sum of these values
+
+
+// you can reduce an array into a variable
+const mySum =numArr.reduce(function(prev, element){
+    return prev+element
 })
 
+console.log(mySum)
+
+const myArr=()=>{
+
+}

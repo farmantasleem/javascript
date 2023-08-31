@@ -96,6 +96,25 @@ body {
   background-color: #222;
 }
 
+.task  {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+
+
+}
+
+.task button {
+  background-color: #8E4BE8;
+  color: white;
+  border: none;
+  padding: 5px;
+  height: 35px;
+  border-radius: 5px;
+}
+
   </style>
 </head>
 <body>
@@ -142,29 +161,54 @@ body {
     const newTodo = document.getElementById("newTodo")
     const addTodo = document.getElementById("addTodo")
 
-    let todoList = ["Sujit","Suraj","Ashu","Swastik","Sandy","Unknown"]
+    let todoList = JSON.parse(localStorage.getItem("todos"))
 
     function renderList (anything) {
         let index = 1
         parentTodoList.innerHTML =""
         for(let list of anything){
+        let div = document.createElement("div");
+        div.className = "task";
+        
         let todoItem = document.createElement("li")
-        todoItem.innerText = index+" "+list
+        let todoStatus  = document.createElement("button");
+        todoStatus.innerText = list.status
+        todoStatus.addEventListener("click",function(){
+          if(todoStatus.innerText == "STATUS: COMPLETED"){
+            updateMyTask(list.id,"STATUS: PENDING",index)
+          }else{
+            updateMyTask(list.id,"STATUS: COMPLETED",index)
+          }
+        })
+        todoItem.innerText = index+". "+list.title
+       
+        div.append(todoItem,todoStatus)
+        parentTodoList.append(div)
         index++
-        parentTodoList.append(todoItem)
         }
     }
+
+  
     renderList(todoList)
 
-
+    let id=0
     addTodo.addEventListener("click",function(){
         const valueofNewTodo =newTodo.value; // taking value of input
-        todoList.unshift(valueofNewTodo) // add to array
+        const task = {id,title:valueofNewTodo,status:"STATUS: PENDING"} //title,status
+        todoList.push(task) // add to array
+        localStorage.setItem("todos",JSON.stringify(todoList))
         renderList(todoList) // render
+        id++
     })
 
 
-
+    function updateMyTask(index=0,updatedStatus,index1){
+      todoList[index].status=updatedStatus
+      console.log(todoList)
+      renderList([...todoList])
+      console.log(index,updatedStatus,index1)
+      localStorage.setItem("todos",JSON.stringify(todoList))
+    }
 
 
 

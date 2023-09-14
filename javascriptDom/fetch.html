@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img { 
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>We are learning fetch api</h1>
+    <div id="parent"></div>
+</body>
+
+<script>
+
+   async function getData (){
+        try {
+         const data = await fetch("https://fakestoreapi.com/producs")
+        const resp = await data.json()
+        render(resp)
+            
+        } catch (error) {
+            console.log("error",error)
+        }
+    }
+   getData()
+    // if promise is successfull
+
+    // data.then((resp)=> { 
+    //     resp.json().then((data)=>{
+    //         console.log(data)
+    //         render(data)
+            
+    //     }).catch((error)=>{
+    //         console.log(error)
+    //     })
+        
+    // }).catch((error)=>{
+    //     console.log("error",error)
+    // })
+
+
+
+    function render(array){
+        let div = document.getElementById("parent");
+        for(let item of array){
+            let newList = document.createElement("li")
+            let image = document.createElement("img");
+            image.src = item.image
+            newList.innerText = item.title
+
+            div.append(image,newList)
+        }
+    }
+</script>
+</html>

@@ -99,3 +99,7 @@ console.log("All Students",allStudents)
 
 // printName("ashu","Gaurav","Sujit","Sura","anything")
 
+
+
+
+// ... spread operator rest operator 

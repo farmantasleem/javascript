@@ -161,9 +161,10 @@ body {
     const newTodo = document.getElementById("newTodo")
     const addTodo = document.getElementById("addTodo")
 
-    let todoList = JSON.parse(localStorage.getItem("todos"))
+    let todoList = JSON.parse(localStorage.getItem("todos"))||[]
 
     function renderList (anything) {
+      console.log("ANYTHING",anything)
         let index = 1
         parentTodoList.innerHTML =""
         for(let list of anything){
@@ -191,7 +192,7 @@ body {
   
     renderList(todoList)
 
-    let id=0
+    let id=todoList.length||0
     addTodo.addEventListener("click",function(){
         const valueofNewTodo =newTodo.value; // taking value of input
         const task = {id,title:valueofNewTodo,status:"STATUS: PENDING"} //title,status

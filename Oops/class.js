@@ -62,3 +62,26 @@
 // const result = newarray(arr,callback)
 // console.log(result)
 
+
+
+
+// Objects - Ashu
+// Yuvraj - implement hof
+// shivam - promises
+// utkarsh sir please explain , what is the use of
+//  async while  whithout using callback  also get the output
+// subhrajit -- error handling
+
+// Neeraj -- oops
+
+
+
+// practice 
+
+//1. Lecture? research about them try to understand them
+
+//2. Lecture? Examples? create same examples/question try to solve them
+
+//3. Assignment & Quiz -- Research // solution
+
+//4. KEEP BUILDING PROJECTS - 1HOUR/30 MINUTES

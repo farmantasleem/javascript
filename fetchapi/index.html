@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    // api -- communication
+    // api endpoint --> https://jsonplaceholder.typicode.com/todos
+
+    // http has some method;
+    // 1.POST -- SEND SOME DATA, TO CREATE SOMETHING
+    // 2.GET -- TO GET SOMETHING FROM SERVER
+    // 3.PATCH -- TO UPDATE SOMETHING IN DATABASE
+    // 4.PUT -- TO REPLACE SOMETHING IN DATABSE
+    // 5. DELETE -- TO DELETE SOMETHING FROM DATABASE
+
+
+   async function getData(){
+            try {
+                const resp = await fetch("https://jsonplaceholder.typicode.com/todos99")
+                const data = await resp.json();
+                console.log(data)
+                
+            } catch (error) {
+                console.log("ERROR",error.message)
+            }
+    }
+  
+   getData()
+  </script>
+</html>

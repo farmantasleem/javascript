@@ -23,3 +23,30 @@ const studentName = {
 
 
 const printmyName = studentName.print.apply(studentThree,[1,2,3])
+
+
+
+
+
+
+//  HOF - A function which takes another fn as argu or return a function is called fn?
+
+
+
+// Add
+function x(){
+    return Math.floor(Math.random()*100)
+}
+function y(){
+    return Math.floor( Math.random()*10)
+}
+
+
+function add(x,y){
+    return x()+y()
+}
+
+// a function which was passed as arguement to another fn is nothing but callback
+
+const finalResult = add(x,y)
+console.log("finalResult",finalResult)
